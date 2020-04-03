@@ -7,6 +7,9 @@ let logger = require('morgan');
 import router from '../router/router';
 import userRouter from '../router/user-router';
 
+let config = require("../../config");
+
+
 //链接数据库
 let bodyParser = require('body-parser');
 let cors = require('cors');
@@ -16,8 +19,7 @@ let session = require('express-session');
 const app = express();
 
 //服务器连接数据库
-let DB_URL = "mongodb://localhost:27017/blogs";
-mongoose.connect(DB_URL, {useNewUrlParser: true, useCreateIndex: true})
+mongoose.connect(config.db.url, {useNewUrlParser: true, useCreateIndex: true})
   .then(() => {
         console.log("connect successfully!")
     }, (err) => {
@@ -46,7 +48,7 @@ app.use(session({
 app.use(router);
 app.use(userRouter);
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || config.port;
 app.listen(PORT, (err) => {
     if (err) {
         console.log(err);
