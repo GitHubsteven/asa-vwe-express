@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/asa-vwe-express.iml" filepath="$PROJECT_DIR$/.idea/asa-vwe-express.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../asa-vwe-frontend-2.0/.idea/asa-vwe-frontend-2.0.iml" filepath="$PROJECT_DIR$/../asa-vwe-frontend-2.0/.idea/asa-vwe-frontend-2.0.iml" />
     </modules>
   </component>
 </project>

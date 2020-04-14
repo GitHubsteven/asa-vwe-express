@@ -144,13 +144,3 @@ router.get("/test-pm2-watching/:id", (req, resp) => {
     };
     return resp.json(response);
 });
-
-router.get("/test-jenkins-deploy-pm2-watching/:id", (req, resp) => {
-    let response = {
-        requestId: req.params.id,
-        time: new Date().getTime()
-    };
-    return resp.json(response);
-});
-
-
