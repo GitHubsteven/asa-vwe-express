@@ -35,17 +35,17 @@ router.post('/blog-list', (req, res) => {
             data.count = count;
             //在按页来查找数量
             BlogModel.find(params)
-                .skip((searchOpt.curPage - 1) * searchOpt.pageSize)
-                .limit(searchOpt.pageSize)
-                .exec((err, blogs) => {
-                    if (err) {
-                        console.log(err);
-                        return res.status(500);
-                    } else {
-                        data.items = blogs;
-                        res.json(data);
-                    }
-                });
+              .skip((searchOpt.curPage - 1) * searchOpt.pageSize)
+              .limit(searchOpt.pageSize)
+              .exec((err, blogs) => {
+                  if (err) {
+                      console.log(err);
+                      return res.status(500);
+                  } else {
+                      data.items = blogs;
+                      res.json(data);
+                  }
+              });
         }
     })
 });
@@ -128,13 +128,21 @@ router.post("/comments-create/", (req, resp) => {
 
 router.get("/comment-getSubs/:blogId/:commentId", (req, resp) => {
     CommentModel.find({blogId: req.params.blogId, refId: req.params.commentId})
-        .then((subs, err) => {
-            if (err) {
-                resp.status(500).json(err);
-            } else {
-                resp.json(subs)
-            }
-        })
+      .then((subs, err) => {
+          if (err) {
+              resp.status(500).json(err);
+          } else {
+              resp.json(subs)
+          }
+      })
+});
+
+router.get("/test-pm2-watching/:id", (req, resp) => {
+    let response = {
+        requestId: req.params.id,
+        time: new Date().getTime()
+    };
+    return resp.json(response);
 });
 
 
