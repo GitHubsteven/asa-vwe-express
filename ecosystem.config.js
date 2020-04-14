@@ -1,3 +1,4 @@
+let app_dir = "/data/vwe/logs/asa-vwe-express";
 module.exports = {
     apps: [{
         name: 'asa-vwe-express',
@@ -9,9 +10,9 @@ module.exports = {
         autorestart: true,
         watch: true,
         ignore_watch: ["[\/\\]\./", "node_modules"],
-        error_file: '/data/vwe/logs/err.log',
-        out_file: '/data/vwe/logs/out.log',
-        log_file: '/data/vwe/logs/combined.log',
+        error_file: app_dir + '/err.log',
+        out_file: app_dir + '/out.log',
+        log_file: app_dir + '/combined.log',
         time: true,
         max_memory_restart: '1G',
         env: {
