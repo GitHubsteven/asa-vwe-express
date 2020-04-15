@@ -136,11 +136,3 @@ router.get("/comment-getSubs/:blogId/:commentId", (req, resp) => {
           }
       })
 });
-
-router.get("/test-pm2-watching/:id", (req, resp) => {
-    let response = {
-        requestId: req.params.id,
-        time: new Date().getTime()
-    };
-    return resp.json(response);
-});
