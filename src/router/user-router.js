@@ -1,6 +1,6 @@
 let express = require('express');
-let UserModel = require("../models/UserModel.js");
-let SessionModel = require("../models/SessionModel.js");
+let UserModel = require("../models/user.model.js");
+let SessionModel = require("../models/session.model.js");
 
 let userRouter = express.Router();
 

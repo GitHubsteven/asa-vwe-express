@@ -2,5 +2,6 @@
   "port": 9090,
   "db": {
     "url": "mongodb://localhost:27017/blogs"
-  }
+  },
+  "secret": "hello,world"
 }

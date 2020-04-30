@@ -1,14 +1,11 @@
-import path from 'path'
-import express from 'express'
+const express = require('express');
 
-let createError = require('http-errors');
 let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-import router from '../router/router';
-import userRouter from '../router/user-router';
+const jwt = require('../_helpers/jwt');
+const errorHandler = require('../_helpers/error-handler');
+const router = require('../router/router');
 
 let config = require("../../config");
-
 
 //链接数据库
 let bodyParser = require('body-parser');
@@ -33,6 +30,7 @@ mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(jwt());
 
 // app.use(logger('dev'));
 app.use(cookieParser());
@@ -46,7 +44,8 @@ app.use(session({
     },
 }));
 app.use(router);
-app.use(userRouter);
+app.use('/users', require('../_controller/user/user.controller'));
+app.use(errorHandler);
 
 const PORT = process.env.PORT || config.port;
 app.listen(PORT, (err) => {

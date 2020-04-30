@@ -1,8 +1,8 @@
 /* eslint-disable no-console,no-undef */
 // eslint-disable-next-line
 let express = require('express');
-let BlogModel = require('../models/Blog.js');
-let CommentModel = require('../models/Comment');
+let BlogModel = require('../models/blog.model.js');
+let CommentModel = require('../models/commen.model');
 let router = express.Router();
 
 module.exports = router;
