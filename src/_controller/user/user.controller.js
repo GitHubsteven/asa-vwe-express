@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('../../_service/user/user.service');
-
+let userUrl = require("../../_helpers/vwe-url.js").users();
 //routes
-router.post('/authenticate', authenticate);
-router.post('/register', register);
-router.get('/', getAll);
-router.get('/current', getCurrent);
-router.get('/:id', getById);
-router.put('/:id', update);
-router.delete('/:id', _delete);
+router.post(userUrl.authenticate, authenticate);
+router.post(userUrl.register, register);
+router.get(userUrl.getAll, getAll);
+router.get(userUrl.current, getCurrent);
+router.get(userUrl.getById, getById);
+router.put(userUrl.update, update);
+router.delete(userUrl.delete, _delete);
 
 module.exports = router;
 

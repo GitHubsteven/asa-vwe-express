@@ -2,14 +2,12 @@
 // eslint-disable-next-line
 let express = require('express');
 let BlogModel = require('../models/blog.model.js');
-let CommentModel = require('../models/commen.model');
+let CommentModel = require('../models/comment.model');
 let router = express.Router();
 
 module.exports = router;
 
 router.all("/*", (req, res, next) => {
-    console.log("request receive session: " + JSON.stringify(req.session));
-    console.log("request receive cookie: " + JSON.stringify(req.cookies));
     next();
 });
 
