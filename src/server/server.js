@@ -1,20 +1,13 @@
-import path from 'path'
-import express from 'express'
-
-let createError = require('http-errors');
+const express = require('express');
 let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-import router from '../router/router';
-import userRouter from '../router/user-router';
-
+const jwt = require('../_helpers/jwt');
+const errorHandler = require('../_helpers/error-handler');
 let config = require("../../config");
-
-
-//链接数据库
+//连接数据库
 let bodyParser = require('body-parser');
 let cors = require('cors');
 let mongoose = require('mongoose');
-let session = require('express-session');
+let vweRoot = require("../_helpers/vwe-url.js").root();
 
 const app = express();
 
@@ -33,20 +26,13 @@ mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(jwt());
 
-// app.use(logger('dev'));
 app.use(cookieParser());
-// 使用 session 中间件
-app.use(session({
-    secret: 'secret', // 对session id 相关的cookie 进行签名
-    resave: true,
-    saveUninitialized: false, // 是否保存未初始化的会话
-    cookie: {
-        maxAge: 1000 * 60 * 3, // 设置 session 的有效时间，单位毫秒
-    },
-}));
-app.use(router);
-app.use(userRouter);
+
+app.use(vweRoot.users, require('../_controller/user/user.controller'));
+app.use(vweRoot.blogs, require('../_controller/blog/blog.controller'));
+app.use(errorHandler);
 
 const PORT = process.env.PORT || config.port;
 app.listen(PORT, (err) => {
