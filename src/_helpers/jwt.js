@@ -6,18 +6,23 @@ module.exports = jwt;
 
 function jwt() {
     const secret = config.secret;
-    return expressJwt({secret, isRevoked}).unless({
-        path: [
-            // public routes that don't require authentication
-            '/users/authenticate',
-            '/users/register'
-        ]
-    });
+    return expressJwt({secret, isRevoked}).unless(filter);
 }
 
-async function isRevoked(req, payload, done) {
-    const user = await userService.getById(payload.sub);
+let filter = function (req) {
+    let publicPaths = ['/users/authenticate',
+        '/users/register',
+        '/blogs/list'];
+    if (publicPaths.includes(req.url)) return true;
+    let regex = /\/blogs\/.+/;
+    let isBlogQuery = regex.exec(req.url);
+    return req.method === 'GET' && isBlogQuery;
+};
 
+
+async function isRevoked(req, payload, done) {
+
+    const user = await userService.getById(payload.sub);
     // revoke token if user no longer exists
     if (!user) {
         return done(null, true);
