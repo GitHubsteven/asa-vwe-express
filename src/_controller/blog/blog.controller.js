@@ -41,3 +41,17 @@ function create(req, res, next) {
       .then(() => res.json())
       .catch(error => next(error))
 }
+
+/**
+ * 封装正常返回的包装，异常的暂时不会
+ * @param data
+ * @returns {{data: *, success: boolean, errorCode: null, errorMsg: null}}
+ */
+function wrapperResp(data) {
+    return {
+        success: true,
+        errorCode: null,
+        errorMsg: null,
+        data: data
+    }
+}
