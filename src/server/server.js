@@ -13,12 +13,12 @@ const app = express();
 
 //服务器连接数据库
 mongoose.connect(config.db.url, {useNewUrlParser: true, useCreateIndex: true})
-  .then(() => {
-        console.log("connect successfully!")
-    }, (err) => {
-        console.log('error when connect to mongo db!' + err)
-    }
-  );
+    .then(() => {
+            console.log("connect successfully!")
+        }, (err) => {
+            console.log('error when connect to mongo db!' + err)
+        }
+    );
 
 mongoose.set('useFindAndModify', false);
 
@@ -32,6 +32,7 @@ app.use(cookieParser());
 
 app.use(vweRoot.users, require('../_controller/user/user.controller'));
 app.use(vweRoot.blogs, require('../_controller/blog/blog.controller'));
+app.use(vweRoot.categories, require('../_controller/category/category.controller'));
 app.use(errorHandler);
 
 const PORT = process.env.PORT || config.port;

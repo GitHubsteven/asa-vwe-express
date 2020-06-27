@@ -3,11 +3,13 @@ let Schema = mongoose.Schema;
 
 let BlogSchema = new Schema({
     title: String,
-    author: String,
+    author: {type: String, required: true},
     userId: String,
     context: String,
+    tags: [],
+    category: {type: String, required: true},
     modifiedTime: {type: Date, default: Date.now},
-    createTime: {type: Date, default: Date.now},
+    createTime: {type: Date, default: Date.now}
 });
 
 

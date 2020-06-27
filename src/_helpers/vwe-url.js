@@ -1,4 +1,4 @@
-module.exports = {root, blogs, users};
+module.exports = {root, blogs, users, categories};
 
 function blogs() {
     return {
@@ -24,9 +24,21 @@ function users() {
     };
 }
 
+function categories() {
+    return {
+        root: "/categories",
+        list: "/",
+        getById: "/:id",
+        update: "/:id",
+        delete: "/:id",
+        create: "/"
+    };
+}
+
 function root() {
     return {
         blogs: "/blogs",
-        users: "/users"
+        users: "/users",
+        categories: "/categories"
     }
 }
