@@ -37,8 +37,8 @@ function categories() {
 
 function root() {
     return {
-        blogs: "/blogs",
-        users: "/users",
-        categories: "/categories"
+        blogs: "/vwe/blogs",
+        users: "/vwe/users",
+        categories: "/vwe/categories"
     }
 }
