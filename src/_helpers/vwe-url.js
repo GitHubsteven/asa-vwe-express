@@ -1,4 +1,4 @@
-module.exports = {root, blogs, users, categories};
+module.exports = {root, blogs, users, categories, common};
 
 function blogs() {
     return {
@@ -35,10 +35,18 @@ function categories() {
     };
 }
 
+function common() {
+    return {
+        root: "/common",
+        setting: "/setting"
+    }
+}
+
 function root() {
     return {
         blogs: "/blogs",
         users: "/users",
-        categories: "/categories"
+        categories: "/categories",
+        common: "/common"
     }
 }
