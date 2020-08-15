@@ -44,9 +44,9 @@ function common() {
 
 function root() {
     return {
-        blogs: "/blogs",
-        users: "/users",
-        categories: "/categories",
-        common: "/common"
+        blogs: "/vwe/blogs",
+        users: "/vwe/users",
+        categories: "/vwe/categories",
+        common: "/vwe/common"
     }
 }
