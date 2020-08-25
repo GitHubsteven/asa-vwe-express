@@ -7,7 +7,7 @@ let BlogSchema = new Schema({
     userId: String,
     context: String,
     tags: [],
-    category: {type: String, required: true},
+    categories: {type: String, required: true},
     modifiedTime: {type: Date, default: Date.now},
     createTime: {type: Date, default: Date.now}
 });
