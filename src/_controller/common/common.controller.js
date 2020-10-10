@@ -12,11 +12,11 @@ async function listSetting(req, res, next) {
     let setting = {};
     // get categories
     await service.list(req.body).then(list => {
-        let cateNames = [];
+        let categories = [];
         list.forEach(cate => {
-            cateNames.push(cate.name);
+            categories.push({"key": cate._id, "value": cate.name});
         });
-        setting.categories = cateNames;
+        setting.categories = categories;
     });
     await res.json(setting);
     next();

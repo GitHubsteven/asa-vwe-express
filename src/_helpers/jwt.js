@@ -10,9 +10,11 @@ function jwt() {
 }
 
 let filter = function (req) {
-    let publicPaths = ['/users/authenticate',
-        '/users/register',
-        '/blogs/list'];
+    let publicPaths = ['/vwe/users/authenticate',
+        '/vwe/users/register',
+        '/vwe/blogs/list',
+        '/vwe/common/setting'
+    ];
     if (publicPaths.includes(req.url)) return true;
     let regex = /\/blogs\/.+/;
     let isBlogQuery = regex.exec(req.url);
