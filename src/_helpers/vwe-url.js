@@ -46,7 +46,8 @@ function statistics() {
     return {
         root: "/statistics",
         blogByCategory: "/blogByCategory",
-        blogByTag: "/blogByTag"
+        blogByTag: "/blogByTag",
+        blogByCreateTime: "/blogByCreateTime"
     };
 }
 

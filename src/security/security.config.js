@@ -6,6 +6,7 @@ function freeUrls() {
         '/vwe/blogs/list',
         '/vwe/common/setting',
         '/vwe/statistics/blogByCategory',
-        '/vwe/statistics/blogByTag'
+        '/vwe/statistics/blogByTag',
+        '/vwe/statistics/blogByCreateTime'
     ];
 }
