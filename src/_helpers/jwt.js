@@ -1,6 +1,7 @@
 const expressJwt = require('express-jwt');
 const config = require('../../config.json');
 const userService = require('../_service/user/user.service');
+const freeUrls = require("../security/security.config").freeUrls();
 
 module.exports = jwt;
 
@@ -10,12 +11,7 @@ function jwt() {
 }
 
 let filter = function (req) {
-    let publicPaths = ['/vwe/users/authenticate',
-        '/vwe/users/register',
-        '/vwe/blogs/list',
-        '/vwe/common/setting'
-    ];
-    if (publicPaths.includes(req.url)) return true;
+    if (freeUrls.includes(req.url)) return true;
     let regex = /\/blogs\/.+/;
     let isBlogQuery = regex.exec(req.url);
     return req.method === 'GET' && isBlogQuery;

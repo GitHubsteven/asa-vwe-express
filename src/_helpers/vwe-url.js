@@ -1,4 +1,4 @@
-module.exports = {root, blogs, users, categories, common};
+module.exports = {root, blogs, users, categories, common, statistics};
 
 function blogs() {
     return {
@@ -42,11 +42,21 @@ function common() {
     }
 }
 
+function statistics() {
+    return {
+        root: "/statistics",
+        blogByCategory: "/blogByCategory",
+        blogByTag: "/blogByTag"
+    };
+}
+
+
 function root() {
     return {
         blogs: "/vwe/blogs",
         users: "/vwe/users",
         categories: "/vwe/categories",
-        common: "/vwe/common"
+        common: "/vwe/common",
+        statistics: "/vwe/statistics"
     }
 }
