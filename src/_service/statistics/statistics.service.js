@@ -15,9 +15,11 @@ async function blogTypeStatistics() {
 }
 
 async function blogCreateTimeStatistics() {
-    return await BlogModel.aggregate([])
-      .group({
-          "_id": {$dateToString: {format: "%Y-%m", date: "$createTime"}},
-          count: {$sum: 1}
-      });
+    return await BlogModel.aggregate({
+        $group: {
+            _id: {$dateToString: {format: "%Y-%m", date: "$createTime"}},
+            count: {$sum: 1}
+        },
+        $sort: {_id: 1}
+    });
 }
