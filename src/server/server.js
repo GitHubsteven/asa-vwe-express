@@ -32,6 +32,10 @@ app.use(cookieParser());
 
 app.use(vweRoot.users, require('../_controller/user/user.controller'));
 app.use(vweRoot.blogs, require('../_controller/blog/blog.controller'));
+app.use(vweRoot.categories, require('../_controller/category/category.controller'));
+app.use(vweRoot.common, require('../_controller/common/common.controller'));
+app.use(vweRoot.statistics, require('../_controller/statistics/statistics.controller'));
+
 app.use(errorHandler);
 
 const PORT = process.env.PORT || config.port;

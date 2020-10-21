@@ -1,4 +1,4 @@
-module.exports = {root, blogs, users};
+module.exports = {root, blogs, users, categories, common, statistics};
 
 function blogs() {
     return {
@@ -24,9 +24,40 @@ function users() {
     };
 }
 
+function categories() {
+    return {
+        root: "/categories",
+        list: "/",
+        getById: "/:id",
+        update: "/:id",
+        delete: "/:id",
+        create: "/"
+    };
+}
+
+function common() {
+    return {
+        root: "/common",
+        setting: "/setting"
+    }
+}
+
+function statistics() {
+    return {
+        root: "/statistics",
+        blogByCategory: "/blogByCategory",
+        blogByTag: "/blogByTag",
+        blogByCreateTime: "/blogByCreateTime"
+    };
+}
+
+
 function root() {
     return {
-        blogs: "/blogs",
-        users: "/users"
+        blogs: "/vwe/blogs",
+        users: "/vwe/users",
+        categories: "/vwe/categories",
+        common: "/vwe/common",
+        statistics: "/vwe/statistics"
     }
 }

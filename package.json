@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/server/server.js",
-    "start-dev": "nodemon ./src/server/server.js"
+    "start-dev": "nodemon ./src/server/server.js",
+    "test": "jest --config ./jest.config.json",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -19,22 +21,24 @@
   },
   "homepage": "https://github.com/GitHubsteven/x-asa#readme",
   "dependencies": {
+    "@jest/globals": "^26.5.2",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.4",
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
+    "express-session": "^1.17.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
-    "rm": "^0.3.0",
-    "showdown": "^1.9.0",
-    "express-session": "^1.17.1",
-    "cookie-parser": "^1.4.5",
     "mongodb": "^3.2.7",
     "mongoose": "^5.6.9",
+    "rm": "^0.3.0",
     "rootpath": "^0.1.2",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.4"
+    "showdown": "^1.9.0"
   },
   "devDependencies": {
+    "jest": "^26.5.2",
     "nodemon": "^1.19.1"
   }
 }
